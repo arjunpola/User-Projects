@@ -1,3 +1,5 @@
+#Simplest plotly example. Orange lines are collatz stop times, 
+#gray lines are their averages taken from 20 to 20.
 #This example plot
 #https://plot.ly/~GermanJimenez/4/
 
