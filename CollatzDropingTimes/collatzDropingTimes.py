@@ -1,12 +1,10 @@
-#Simplest plotly example. Orange lines are collatz stop times, 
-#gray lines are their averages taken from 20 to 20.
-#This example plot
-#https://plot.ly/~GermanJimenez/4/
+#plot.ly Example
+#This https://plot.ly/~GermanJimenez/0
 
 import plotly
 import os
 
-def collatzStopTime(n):
+def collatzStopingTime(n):
     c = 0
     while n != 1:
         if n % 2 == 0: n /= 2
@@ -24,12 +22,12 @@ limit = 2000
 #Coordinates
 collatzTrace = {
                 'x': range( 1, limit ),
-                'y': [collatzStopTime( n ) for n in range(1,limit)],
+                'y': [collatzStopingTime( n ) for n in range(1,limit)]
                 }
-
+#Styles
 collatzTraceStyles = {
                 "type":"scatter",
-                "name":"Collatz Stop times",
+                "name":"Collatz stoping times",
                 "line":{"color":"orange",
                         "width":2,
                         "dash":"solid",
@@ -37,7 +35,7 @@ collatzTraceStyles = {
                         }
                 }
 
-#Collatz algorithm stop times averages-----------------------------------
+#Collatz algorithm stoping times averages-----------------------------------
 
 rang = limit/100
 la = [collatzTrace['y'][x:x+rang] for x in range(0, len(collatzTrace['y']), rang)]
@@ -55,7 +53,7 @@ collatzAverages = {
 #Styles
 collatzAveragesStyles = {
                 "type":"scatter",
-                "name":"Stop times averages (%s)" % rang,
+                "name":"Stoping times averages (%s)" % rang,
                 "line":{"opacity": 0.3,
                         "color":"gray",
                         "width":3,
@@ -67,22 +65,21 @@ collatzAveragesStyles = {
 #response = plotly.signup(username, email) #Signup
 
 #loggin
-username = 'MyUsername'
-email='MyEmail'
-key = 'MyKey'
+username = str(raw_input("Username: "))
+email =  str(raw_input("e-mail: "))
+key =  str(raw_input("Key: "))
 
 py = plotly.plotly(username, key)
 
 response = py.plot(collatzTrace,collatzAverages)
-response = py.style(collatzTraceStyles,collatzAveragesStyles)
+py.style(collatzTraceStyles,collatzAveragesStyles)
 
 url = response['url']
 filename = response['filename']
 
 if url:
-    #os.system('firefox %s' % url)
+    os.system('firefox %s' % url)
     #os.system('explorer %s' % url)
-    os.system('google-chrome %s' % url)
+    #os.system('google-chrome %s' % url)
 
-#This example plot
-#https://plot.ly/~GermanJimenez/4/
+#This https://plot.ly/~GermanJimenez/0
